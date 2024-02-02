@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TodoItem from "./TodoItem";
 
 export default function Todo() {
   // State variable to track the content of the to-do input field
@@ -26,6 +27,11 @@ export default function Todo() {
         {/* Button for submitting the to-do item */}
         <button type="submit">Add</button>
       </form>
+
+      {/* Displaying the list of to-do items using TodoItem component */}
+      {todos.map((item) => (
+        <TodoItem key={item} item={item} />
+      ))}
     </div>
   );
 }
