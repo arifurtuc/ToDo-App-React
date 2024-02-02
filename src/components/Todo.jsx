@@ -3,11 +3,20 @@ import { useState } from "react";
 export default function Todo() {
   // State variable to track the content of the to-do input field
   const [todo, setTodo] = useState("");
+  // State variable to store the list of to-do items
+  const [todos, setTodos] = useState([]);
+
+  // Function to handle form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    setTodos([...todos, todo]);
+    setTodo("");
+  }
 
   return (
     <div>
       {/* Form for adding to-do items */}
-      <form>
+      <form onSubmit={handleSubmit}>
         {/* Input field with an onChange handler to update 'todo' state */}
         <input
           onChange={(e) => setTodo(e.target.value)}
