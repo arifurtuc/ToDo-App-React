@@ -25,6 +25,7 @@
   color: white;
   padding: 6px 12px;
   font-size: 20px;
+  cursor: pointer;
 }
 .inputContainer {
   display: flex;
