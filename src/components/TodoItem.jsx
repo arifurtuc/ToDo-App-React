@@ -5,10 +5,29 @@ export default function TodoItem({ item, todos, setTodos }) {
   function handleDelete(item) {
     setTodos(todos.filter((todo) => todo !== item));
   }
+
+  // Function to handle the toggling of the completion status of a to-do item.
+  function handleClick(name) {
+    setTodos(
+      todos.map((todo) =>
+        todo.name === name ? { ...todo, status: !todo.status } : todo
+      )
+    );
+  }
+
+  // CSS class to apply for completed to-do items
+  const completedClassName = item.status ? styles.completed : "";
+
   return (
     <div className={styles.item}>
       <div className={styles.itemName}>
-        {item}
+        {/* Clickable span to toggle completion status */}
+        <span
+          className={completedClassName}
+          onClick={() => handleClick(item.name)}
+        >
+          {item.name}
+        </span>
         {/* Delete button to remove todos */}
         <span>
           <button
